@@ -26,3 +26,5 @@ zplug load --verbose
 
 PROMPT="%63F>%f "
 RPROMPT="%93F%2d%f"
+
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
