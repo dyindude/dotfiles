@@ -54,6 +54,9 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
 
 #need to test out what all these actually do
 #http://blog.patshead.com/2012/01/using-and-customizing-zsh-syntax-highlighting-with-oh-my-zsh.html
+#http://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html
+#https://stackoverflow.com/questions/25274842/256-colors-in-zsh-syntax-highlighting
+#fg=nnn works
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=red,bold
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=green
@@ -78,3 +81,12 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 source ~/.prompt.zsh
 #remove right side indent for promptline
 ZLE_RPROMPT_INDENT=0
+
+alias ls='ls -G'
+
+#fix some keys
+#TODO: test if these are needed in OSes other than OSX
+bindkey "\033[1~" beginning-of-line #home
+bindkey "\033[4~" end-of-line       #end
+bindkey "^[[3~" delete-char         #delete
+
