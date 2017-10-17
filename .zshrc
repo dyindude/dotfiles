@@ -11,6 +11,12 @@ if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug.git ~/.zplug
 fi
 
+## clone tpm if it doesn't exist
+#does this belong in zshrc?
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 #needs to be loaded before zsh-syntax-highlighting
 #http://blog.patshead.com/2012/01/using-and-customizing-zsh-syntax-highlighting-with-oh-my-zsh.html
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
@@ -37,7 +43,7 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+zplug load
 
 ## zplug end
 
