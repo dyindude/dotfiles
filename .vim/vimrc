@@ -27,6 +27,15 @@ Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
 "Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
 call plug#end()
 
+"indentation rules
+set autoindent
+filetype plugin indent on
+"todo: set different filetype tabindent (yml, etc)
+set tabstop=4
+set expandtab
+set shiftwidth=4
+"filetype indent on
+
 "only really currently working with ansible for yaml, this will do for now
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab filetype=ansible
 
@@ -100,17 +109,6 @@ endfunction
 "f11 = attempt to autoindent whole file
 nmap <F11> 1G=G
 imap <F11> <ESC>1G=Ga
-
-"http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim
-"smartindent is deprecated
-"set smartindent
-set autoindent
-filetype plugin indent on
-"todo: set different filetype tabindent (yml, etc)
-set tabstop=4
-set expandtab
-set shiftwidth=4
-"filetype indent on
 
 "case insensitive searching in vim
 set ignorecase
