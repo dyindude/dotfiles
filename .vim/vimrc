@@ -1,0 +1,178 @@
+"fixes buggy arrow key movement in debuntu vim
+set nocompatible
+
+"vim-plug
+source $HOME/.vim/plug.vim
+call plug#begin('~/.vim/plugged')
+" Colorschemes
+Plug 'captbaritone/molokai'
+"Plug 'chriskempson/vim-tomorrow-theme'
+"Plug 'altercation/vim-colors-solarized'
+"Plug 'fxn/vim-monochrome'
+"Plug 'chriskempson/base16-vim'
+"Plug 'NLKNguyen/papercolor-theme'
+
+" Syntax
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+Plug 'vim-airline/vim-airline'
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim', { 'do' : 'cp ~/.vim/local/nightly_fox2.vim ~/.vim/plugged/tmuxline.vim/autoload/tmuxline/presets/.' }
+Plug 'luochen1990/rainbow'
+Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
+"Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
+call plug#end()
+
+set backspace=indent,eol,start "bs=2
+set number
+set cursorline "highlight line cursor is on
+
+set history=1000
+set undolevels=1000
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set title
+
+set visualbell
+set noerrorbells
+
+"need to adjust highlight color before enabling this
+set incsearch
+set hlsearch "looks alright with molokai - sometimes. need to see if we can tweak it.
+
+" inverse tab shift+tab
+" Questioning the utility of this
+" http://stackoverflow.com/questions/4766230/map-shift-tab-in-vim-to-inverse-tab-in-vim
+nmap <S-Tab> <<
+imap <S-Tab> <Esc><<i
+
+" Skip to next line in editor instead of line in file
+nnoremap j gj
+nnoremap k gk
+
+" change the mapleader from \ to ,
+let mapleader=","
+
+" clear higlight with leader /
+nmap <silent> <leader>/ :nohlsearch<CR>
+
+"function keys
+"f2 = paste toggle mode
+set pastetoggle=<F2>
+
+"f3 = toggle number
+nmap <F3> :set number!<CR>
+imap <F3> <ESC>:set number!<CR>i
+
+"f4 = toggle wrap
+nmap <F4> :set wrap!<CR>
+imap <F4> <ESC>:set wrap!<CR>i
+
+"f5 = toggle list
+nmap <F5> :set list!<CR>
+imap <F5> <ESC>:set list!<CR>i
+set listchars=eol:>,extends:/,precedes:\
+
+" The following maps the F6 key to toggle between hex and binary (while also setting the
+" noeol and binary flags, so if you :write your file, vim doesn’t perform unwanted conversions.
+
+noremap <F6> :call HexMe()<CR>
+
+let $in_hex=0
+function HexMe()
+    set binary
+    set noeol
+    if $in_hex>0
+        :%!xxd -r
+        let $in_hex=0
+    else
+        :%!xxd
+        let $in_hex=1
+    endif
+endfunction
+
+"f11 = attempt to autoindent whole file
+nmap <F11> 1G=G
+imap <F11> <ESC>1G=Ga
+
+"http://stackoverflow.com/questions/18415492/autoindent-is-subset-of-smartindent-in-vim
+"smartindent is deprecated
+"set smartindent
+set autoindent
+filetype plugin indent on
+"todo: set different filetype tabindent (yml, etc)
+set tabstop=4
+set expandtab
+set shiftwidth=4
+"filetype indent on
+
+"case insensitive searching in vim
+set ignorecase
+set smartcase
+
+"this is the 90s, 256 colors baby!
+set t_Co=256
+
+"colorscheme mustang
+colorscheme molokai
+"colorscheme wombat
+autocmd filetype make set expandtab!
+"autocmd filetype vim colorscheme wombat
+syntax enable
+
+set bufhidden=hide
+
+"min number of lines above/below before vim will start to scroll
+set scrolloff=3
+
+set numberwidth=5
+
+"navigate buffers
+noremap <C-h> :bprev<CR>
+noremap <C-l> :bnext<CR>
+noremap <Esc>1 :b1<CR>
+noremap <Esc>2 :b2<CR>
+noremap <Esc>3 :b3<CR>
+noremap <Esc>4 :b4<CR>
+noremap <Esc>5 :b5<CR>
+noremap <Esc>6 :b6<CR>
+noremap <Esc>7 :b7<CR>
+noremap <Esc>8 :b8<CR>
+noremap <Esc>9 :b9<CR>
+noremap <Esc>0 :b10<CR>
+
+set laststatus=2
+set showtabline=1
+
+let g:airline_powerline_fonts = 1
+let g:rainbow_active = 1
+"let g:rainbow_operators = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:tmuxline_theme = 'powerline'
+let g:tmuxline_preset = 'nightly_fox2'
+
+" Nobody ever uses "Ex" mode, and it's annoying to leave
+noremap Q <nop>
+
+"swap files
+".swp in common location; // means use full path
+set dir=~/.vim/_swap//
+"backup files in common location if possible
+set backup "turns on backup files
+set backupdir=~/.vim/_backup/,~/tmp,.
+"undo files in common location
+set undofile "turns on undo files
+set undodir=~/.vim/_undo/
+
+"set esc to remove highlight
+nnoremap <silent> <esc> :silent :nohlsearch<cr>
+
+"messing with promptline
+let g:promptline_symbols = {
+            \ 'dir_sep'     : '/'}
+let g:promptline_preset = {
+        \'c' : [ promptline#slices#cwd() ],
+        \'a' : [ promptline#slices#vcs_branch() ] }
+"example to rebuild promptline. this one works for now
+"PromptlineSnapshot! ~/.prompt.sh airline
