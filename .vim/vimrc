@@ -168,11 +168,20 @@ set undodir=~/.vim/_undo/
 "set esc to remove highlight
 nnoremap <silent> <esc> :silent :nohlsearch<cr>
 
+"todo: os-based prompt_icon logic
+"don't want to have to run it every time we load vim though
+let prompt_icon = ''
+
 "messing with promptline
 let g:promptline_symbols = {
             \ 'dir_sep'     : '/'}
 let g:promptline_preset = {
-        \'c' : [ promptline#slices#cwd() ],
-        \'a' : [ promptline#slices#vcs_branch() ] }
+        \'c' : [ promptline#slices#cwd({ 'dir_limit': 2 }) ],
+        \'b' : [ prompt_icon ],
+        \'a' : [ promptline#slices#vcs_branch() ],
+        \'options' : {
+            \'left_sections' : [ 'b' ],
+            \'right_sections' : [ 'c', 'a' ]}}
+
 "example to rebuild promptline. this one works for now
 "PromptlineSnapshot! ~/.prompt.sh airline
