@@ -17,6 +17,8 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 
+Plug 'chase/vim-ansible-yaml'
+
 Plug 'vim-airline/vim-airline'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim', { 'do' : 'cp ~/.vim/local/nightly_fox2.vim ~/.vim/plugged/tmuxline.vim/autoload/tmuxline/presets/.' }
@@ -24,6 +26,9 @@ Plug 'luochen1990/rainbow'
 Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
 "Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
 call plug#end()
+
+"only really currently working with ansible for yaml, this will do for now
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab filetype=ansible
 
 set backspace=indent,eol,start "bs=2
 set number
