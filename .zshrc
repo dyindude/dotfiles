@@ -88,6 +88,8 @@ if [ `uname` = "Darwin" ]; then
   # -N/--quoting-style=literal prevents ls from printing
   # single quotes around files with spaces
   alias ls='gls --color=auto -N'
+elif [ `uname` = "Linux" ]; then
+  alias ls='ls --color=auto -N'
 fi
 
 #fix some keys
