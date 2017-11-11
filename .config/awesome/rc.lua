@@ -581,4 +581,5 @@ end
 
 run_once("parcellite") 
 run_once("xmodmap","/home/dyindude/.Xmodmap")
+run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
 -- }}}
