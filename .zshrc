@@ -117,3 +117,5 @@ if [ $TERM = "rxvt-unicode-256color" ]; then
 	ln -s $WALLFOLDER/$i.png $TARGET_FILE
 fi
 
+alias chrome-noproxy='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-proxy-server --user-data-dir=/tmp/scratch/'
+export EDITOR=$(which vim)
