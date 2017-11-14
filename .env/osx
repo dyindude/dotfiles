@@ -3,3 +3,7 @@
 alias ls='gls --color=auto -N'
 alias chrome-noproxy='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-proxy-server --user-data-dir=/tmp/scratch/'
 export EDITOR=$(which vim)
+
+
+# -*- mode: zsh -*-
+# vi: set ft=zsh :

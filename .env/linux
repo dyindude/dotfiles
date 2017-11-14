@@ -15,3 +15,7 @@ if [ $TERM = "rxvt-unicode-256color" ]; then
 	rm $TARGET_FILE
 	ln -s $WALLFOLDER/$i.png $TARGET_FILE
 fi
+
+
+# -*- mode: zsh -*-
+# vi: set ft=zsh :

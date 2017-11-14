@@ -1,1 +1,4 @@
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME'
+
+# -*- mode: zsh -*-
+# vi: set ft=zsh :
