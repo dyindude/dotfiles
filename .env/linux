@@ -1,0 +1,17 @@
+alias ls='ls --color=auto -N'
+if [ $TERM = "rxvt-unicode-256color" ]; then
+	WALLFOLDER="$HOME/.config/urxvt/wallpapers"
+	TARGET_FILE="$HOME/.config/urxvt/background.png"
+
+	CURRENT_TARGET=$(realpath $TARGET_FILE)
+	i=$(echo ${CURRENT_TARGET##*/} | cut -d "." -f 1)
+	I=$(ls $WALLFOLDER | tail -n 1 | cut -d "." -f 1)
+
+	if [ "$i" = "$I" ]; then
+   		i=001
+	else
+   		i=$(printf "%03d" $(expr $i + 1))
+	fi
+	rm $TARGET_FILE
+	ln -s $WALLFOLDER/$i.png $TARGET_FILE
+fi

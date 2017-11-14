@@ -1,0 +1,5 @@
+# -N/--quoting-style=literal prevents ls from printing
+# single quotes around files with spaces
+alias ls='gls --color=auto -N'
+alias chrome-noproxy='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-proxy-server --user-data-dir=/tmp/scratch/'
+export EDITOR=$(which vim)
