@@ -1,0 +1,56 @@
+!URxvt*font:          xft:Entypo:pixelsize=14,xft:Terminus:size=13
+URxvt*font: xft:Terminus:pixelsize=24,style=bold,xft:Inconsolata\ for\ Powerline:pixelsize=24,style=bold
+!URxvt*font: xft:Terminus:pixelsize=18,xft:Inconsolata\ Nerd\ Font\ Complete\ Mono:pixelsize=18
+!URxvt*font: xft:Terminus:pixelsize=14,xft:Entypo:pixelsize=14
+!URxvt*font: xft:Entypo:pixelsize=14
+!URxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+!URxvt*.shading: 99
+!URxvt.tintColor: gray100
+!URxvt*blurRadius: 50x1
+URxvt*background:#000000
+URxvt*foreground:#FFFFFF
+URxvt*backgroundPixmap: /home/dyindude/.config/urxvt/background.png;0x0+0+0:op=tile
+URxvt*scrollBar: false
+URxvt*saveLines: 20480
+!URxvt*keysym.Meta-1: \033[1;68
+!URxvt*keysym.Meta-2: \033[1;6c
+URxvt*borderLess: 0
+URxvt*internalBorder: 0
+!-*- Perl extensions -*-
+!URxvt.perl-ext-common:default,clipboard,matcher,keyboard-select
+URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.url-launcher:   /usr/bin/google-chrome
+URxvt.underlineURLs:  True
+URxvt.matcher.button: 1 
+URxvt.keysym.M-Escape:perl:keyboard-select:activate
+URxvt.keysym.M-c:     perl:clipboard:copy
+URxvt.keysym.M-v:     perl:clipboard:paste
+URxvt.keysym.M-C-v:   perl:clipboard:paste_escaped
+!URxvt.copyCommand:   xsel -ib
+!URxvt.pasteCommand:  xsel -ob
+!black
+*color0:  #251f1f
+*color8:  #5e5e5e
+!red
+*color1:  #FF3F3F
+*color9:  #FF3F3F
+!green
+*color2:  #3FFF3F
+*color10: #3FFF3F
+!yellow
+*color3:  #ffac18
+*color11: #ffac18
+!blue
+*color4:  #3F3FFF
+*color12: #3F3FFF
+!magenta
+*color5:  #FF3FFF
+*color13: #FF3FFF
+!cyan
+*color6:  #3FFFFF
+*color14: #3FFFFF
+!white
+*color7:  #C0C0C0
+*color15: #C0C0C0
+
