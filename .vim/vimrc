@@ -24,6 +24,7 @@ Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim', { 'do' : 'cp ~/.vim/local/nightly_fox2.vim ~/.vim/plugged/tmuxline.vim/autoload/tmuxline/presets/.' }
 Plug 'luochen1990/rainbow'
 Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 "Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
 call plug#end()
 
