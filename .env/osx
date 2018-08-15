@@ -1,9 +1,10 @@
-# -N/--quoting-style=literal prevents ls from printing
-# single quotes around files with spaces
+
 alias ls='gls --color=auto -N'
 alias chrome-noproxy='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --no-proxy-server --user-data-dir=/tmp/scratch/'
 export EDITOR=$(which vim)
-
+source <(gopass completion zsh | ghead -n -1 | gtail -n +2)
+compdef _gopass gopass
+alias -g PACKER_SSH_PORT='$(lsof -nP -i4TCP | grep LISTEN | grep VBox | cut -d : -f 2 | cut -d " " -f 1)'
 
 # -*- mode: zsh -*-
 # vi: set ft=zsh :
