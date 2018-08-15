@@ -31,5 +31,7 @@ source ~/.prompt.zsh
 #remove right side indent for promptline
 ZLE_RPROMPT_INDENT=0
 
+source ~/.env-local
+
 # -*- mode: zsh -*-
 # vi: set ft=zsh :
