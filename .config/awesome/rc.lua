@@ -47,7 +47,7 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -579,7 +579,9 @@ function run_once(prg,arg_string,pname,screen)
     end  
 end
 
-run_once("parcellite") 
+run_once("parcellite")
 run_once("xmodmap","/home/dyindude/.Xmodmap")
+run_once("xrdb", "-load /home/dyindude/.Xresources")
 run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
+run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
 -- }}}
