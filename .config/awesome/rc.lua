@@ -46,10 +46,23 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 -- beautiful.font = "Inconsolata Nerd Font Mono 10"
-beautiful.bg_focus = "#800080"
+beautiful.bg_normal     = "#222222"
+beautiful.bg_focus      = "#89238d"
+beautiful.bg_urgent     = "#ff0000"
+beautiful.bg_minimize   = "#444444"
+beautiful.bg_systray    = beautiful.bg_normal
+
+beautiful.fg_normal     = "#aaaaaa"
+beautiful.fg_focus      = "#ffffff"
+beautiful.fg_urgent     = "#ffffff"
+beautiful.fg_minimize   = "#ffffff"
+
+beautiful.border_normal = "#000000"
+beautiful.border_focus  = beautiful.bg_focus
+beautiful.border_marked = "#91231c"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+terminal = "urxvtcd"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
