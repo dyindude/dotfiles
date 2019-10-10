@@ -16,15 +16,19 @@ Plug 'captbaritone/molokai'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'elzr/vim-json', { 'for': 'json' }
-
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'chase/vim-ansible-yaml'
-
+Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
 Plug 'vim-airline/vim-airline'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim', { 'do' : 'cp ~/.vim/local/nightly_fox2.vim ~/.vim/plugged/tmuxline.vim/autoload/tmuxline/presets/.' }
 Plug 'luochen1990/rainbow'
 Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+Plug 'junegunn/vim-easy-align', { 'for': 'markdown' }
+
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 "Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
 call plug#end()
 
@@ -40,6 +44,10 @@ set shiftwidth=4
 "only really currently working with ansible for yaml, this will do for now
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab filetype=ansible
 
+"configure Jenkinsfiles to use groovy syntax highlighting
+au BufNewFile,BufRead Jenkinsfile setf groovy
+au BufNewFile,BufRead *.Jenkinsfile setf groovy
+
 set backspace=indent,eol,start "bs=2
 set number
 set cursorline "highlight line cursor is on
@@ -51,6 +59,7 @@ set title
 
 set visualbell
 set noerrorbells
+set nofoldenable
 
 "need to adjust highlight color before enabling this
 set incsearch
@@ -71,6 +80,8 @@ let mapleader=","
 
 " clear higlight with leader /
 nmap <silent> <leader>/ :nohlsearch<CR>
+
+nnoremap <F1> :GoFmt<CR>:GoMetaLinter<CR>
 
 "function keys
 "f2 = paste toggle mode
@@ -174,7 +185,7 @@ nnoremap <silent> <esc> :silent :nohlsearch<cr>
 
 "todo: os-based prompt_icon logic
 "don't want to have to run it every time we load vim though
-let prompt_icon = ''
+"let prompt_icon = ''
 
 "messing with promptline
 let g:promptline_symbols = {
@@ -189,3 +200,6 @@ let g:promptline_preset = {
 
 "example to rebuild promptline. this one works for now
 "PromptlineSnapshot! ~/.prompt.sh airline
+
+"mapping to reverse selected text with ;rv (helpful when pasting RTL text)
+vnoremap ;rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR>
