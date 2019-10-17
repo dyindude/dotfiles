@@ -13,12 +13,14 @@ Plug 'captbaritone/molokai'
 "Plug 'NLKNguyen/papercolor-theme'
 
 " Syntax
+"Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'chase/vim-ansible-yaml'
 Plug 'leafgarland/typescript-vim', { 'for': 'ts' }
+Plug 'jason0x43/vim-js-indent', { 'for': 'ts' }
 Plug 'vim-airline/vim-airline'
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim', { 'do' : 'cp ~/.vim/local/nightly_fox2.vim ~/.vim/plugged/tmuxline.vim/autoload/tmuxline/presets/.' }
@@ -50,6 +52,7 @@ au BufNewFile,BufRead *.Jenkinsfile setf groovy
 
 set backspace=indent,eol,start "bs=2
 set number
+set numberwidth=5
 set cursorline "highlight line cursor is on
 
 set history=1000
@@ -140,8 +143,6 @@ set bufhidden=hide
 
 "min number of lines above/below before vim will start to scroll
 set scrolloff=3
-
-set numberwidth=5
 
 "navigate buffers
 noremap <C-h> :bprev<CR>
