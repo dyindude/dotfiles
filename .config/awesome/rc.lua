@@ -235,9 +235,13 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            --mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
+            require("battery-widget") {
+                battery_prefix = "B",
+                widget_text = "${AC_BAT}${color_on}${percent}%${color_off} "
+            },
             s.mylayoutbox,
         },
     }
@@ -599,4 +603,5 @@ run_once("xmodmap","/home/dyindude/.Xmodmap")
 run_once("xrdb", "-load /home/dyindude/.Xresources")
 run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
 run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
+run_once("syndaemon", "-i 1 -t -d -k")
 -- }}}
