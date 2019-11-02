@@ -10,6 +10,22 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- keyboard layouts
+local keyboard_layout = require("keyboard_layout")
+local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
+
+kbdcfg.add_primary_layout("English", "US", "us")
+kbdcfg.add_primary_layout("ירבע", "HE", "il")
+
+kbdcfg.add_additional_layout("Deutsch",  "DE", "de")
+kbdcfg.add_additional_layout("Русский", "RU", "ru")
+kbdcfg.add_additional_layout("Français", "FR", "fr")
+kbdcfg.bind()
+kbdcfg.widget:buttons(
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
+                       awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
+)
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -236,6 +252,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             --mykeyboardlayout,
+			kbdcfg.widget,
             wibox.widget.systray(),
             mytextclock,
             require("battery-widget") {
@@ -337,7 +354,10 @@ globalkeys = gears.table.join(
                   end
               end,
               {description = "restore minimized", group = "client"}),
-
+    -- Shift-Alt to change keyboard layout
+    awful.key({"Shift"}, "Alt_L", function () kbdcfg.switch_next() end),
+    -- Alt-Shift to change keyboard layout
+    awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch_next() end),
     -- Prompt
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
