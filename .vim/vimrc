@@ -28,6 +28,7 @@ Plug 'luochen1990/rainbow'
 Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'junegunn/vim-easy-align', { 'for': 'markdown' }
+Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
@@ -49,6 +50,10 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab filetype=ansible
 "configure Jenkinsfiles to use groovy syntax highlighting
 au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.Jenkinsfile setf groovy
+autocmd FileType groovy setlocal ts=2 sts=2 sw=2 expandtab
+
+"configure Makefiles to not use expandtab
+autocmd FileType make setlocal expandtab!
 
 set backspace=indent,eol,start "bs=2
 set number
