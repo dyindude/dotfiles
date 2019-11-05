@@ -1,5 +1,5 @@
 alias ls='ls --color=auto -N'
-if [ $TERM = "rxvt-unicode-256color" ]; then
+if [ $TERM = "rxvt-unicode-256color" ] && [ -d "$HOME/.config/urxvt/wallpapers" ]; then
 	WALLFOLDER="$HOME/.config/urxvt/wallpapers"
 	TARGET_FILE="$HOME/.config/urxvt/background.png"
 
