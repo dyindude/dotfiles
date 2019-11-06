@@ -14,6 +14,10 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 local keyboard_layout = require("keyboard_layout")
 local kbdcfg = keyboard_layout.kbdcfg({type = "tui"})
 
+-- widgets from plugin
+local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+local brightnessarc_widget = require("awesome-wm-widgets.brightnessarc-widget.brightnessarc")
+
 kbdcfg.add_primary_layout("English", "US", "us")
 kbdcfg.add_primary_layout("ירבע", "HE", "il")
 
@@ -256,10 +260,19 @@ awful.screen.connect_for_each_screen(function(s)
 			kbdcfg.widget,
             wibox.widget.systray(),
             mytextclock,
-            require("battery-widget") {
-                battery_prefix = "B",
-                widget_text = "${AC_BAT}${color_on}${percent}%${color_off} "
-            },
+--            require("battery-widget") {
+--                battery_prefix = "B",
+--                widget_text = "${AC_BAT}${color_on}${percent}%${color_off} "
+--            },
+brightnessarc_widget({
+    get_brightness_cmd = 'xbacklight -get',
+    inc_brightness_cmd = 'xbacklight -inc 5',
+    dec_brightness_cmd = 'xbacklight -dec 5'
+}),
+        batteryarc_widget({
+            show_current_level = true,
+            arc_thickness = '1',
+        }),
             s.mylayoutbox,
         },
     }
@@ -276,6 +289,8 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("xbacklight -inc 5") end, {description = "increase brightness", group = "custom"}),
+    awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 5") end, {description = "decrease brightness", group = "custom"}),
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
