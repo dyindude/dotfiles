@@ -9,6 +9,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+menubar.menu_gen.lookup_category_icons = function() end
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- keyboard layouts
 local keyboard_layout = require("keyboard_layout")
