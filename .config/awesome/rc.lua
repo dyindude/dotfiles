@@ -90,7 +90,7 @@ beautiful.fg_minimize   = "#ffffff"
 beautiful.border_normal = "#000000"
 beautiful.border_focus  = beautiful.bg_focus
 beautiful.border_marked = "#91231c"
-beautiful.useless_gap = 5
+beautiful.useless_gap = options.gaps
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtcd"
