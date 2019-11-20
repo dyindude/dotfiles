@@ -138,7 +138,7 @@ set smartcase
 set t_Co=256
 
 "colorscheme mustang
-colorscheme molokai
+colorscheme molokai2
 "colorscheme wombat
 autocmd filetype make set expandtab!
 "autocmd filetype vim colorscheme wombat
