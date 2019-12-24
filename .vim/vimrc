@@ -29,6 +29,7 @@ Plug 'jamessan/vim-gnupg', { 'for': 'gpg' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'junegunn/vim-easy-align', { 'for': 'markdown' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
+Plug 'vim-scripts/groovyindent-unix', { 'for': 'groovy' }
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
