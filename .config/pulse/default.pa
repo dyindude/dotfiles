@@ -1,0 +1,3 @@
+pactl load-module module-loopback latency_msec=1
+load-module module-equalizer-sink
+load-module module-dbus-protocol
