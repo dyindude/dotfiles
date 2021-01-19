@@ -33,5 +33,18 @@ ZLE_RPROMPT_INDENT=0
 
 source ~/.env-local
 
+countdown()
+(
+  IFS=:
+  secs=$1
+  while [ $secs -gt 0 ]
+  do
+    sleep 1 &
+    printf "\r%02d:%02d:%02d" $((secs/3600)) $(( (secs/60)%60)) $((secs%60))
+    secs=$(( $secs - 1 ))
+    wait
+  done
+  echo
+)
 # -*- mode: zsh -*-
 # vi: set ft=zsh :
