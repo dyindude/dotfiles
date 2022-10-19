@@ -56,6 +56,8 @@ elif [ `uname` = "Linux" ]; then
     source ~/.env/linux
 fi
 
+source ~/.env-local
+
 #fix some keys
 #TODO: test if these are needed in OSes other than OSX
 bindkey "\033[1~" beginning-of-line #home
