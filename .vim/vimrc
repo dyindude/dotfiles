@@ -31,7 +31,7 @@ Plug 'junegunn/vim-easy-align', { 'for': 'markdown' }
 Plug 'vim-scripts/applescript.vim', { 'for': 'applescript' }
 Plug 'vim-scripts/groovyindent-unix', { 'for': 'groovy' }
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoUpdateBinaries' }
 
 "Plug 'tpope/vim-surround' "Need to read up on how this plugin works first
 call plug#end()
@@ -90,7 +90,8 @@ let mapleader=","
 " clear higlight with leader /
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-nnoremap <F1> :GoFmt<CR>:GoMetaLinter<CR>
+"example keybinding for only one filetype
+autocmd FileType go nnoremap <F1> :GoFmt<CR>:GoMetaLinter<CR>
 
 "function keys
 "f2 = paste toggle mode
@@ -126,6 +127,10 @@ function HexMe()
         let $in_hex=1
     endif
 endfunction
+
+"f7 = moonphase insert
+autocmd FileType markdown nmap <F1> :r!echo $(moonphase), $(planetaryhour)<CR>
+nmap <F7> :r!echo $(moonphase), $(planetaryhour)<CR>
 
 "f11 = attempt to autoindent whole file
 nmap <F11> 1G=G
