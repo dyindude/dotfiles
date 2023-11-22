@@ -106,7 +106,6 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -119,6 +118,7 @@ awful.layout.layouts = {
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier,
     awful.layout.suit.corner.nw,
+    awful.layout.suit.floating,
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
@@ -144,14 +144,14 @@ end
 -- Create a launcher widget and a main menu
 myawesomemenu = {
     { "hotkeys", function() return false, hotkeys_popup.show_help end},
-    { "manual", terminal .. " -e man awesome" },
-    { "edit config", editor_cmd .. " " .. awesome.conffile },
+    --{ "manual", terminal .. " -e man awesome" },
+    --{ "edit config", editor_cmd .. " " .. awesome.conffile },
     { "restart", awesome.restart },
     { "quit", function() awesome.quit() end}
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-{ "Debian", debian.menu.Debian_menu.Debian },
+--{ "Debian", debian.menu.Debian_menu.Debian },
 { "open terminal", terminal }
                                   }
                               })
@@ -645,9 +645,11 @@ function run_once(prg,arg_string,pname,screen)
 end
 
 run_once("parcellite")
+run_once("gnome-screensaver")
 run_once("xmodmap","/home/dyindude/.Xmodmap")
 run_once("xrdb", "-load /home/dyindude/.Xresources")
-run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
-run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
+--run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
+--run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
+run_once("/home/dyindude/.config/setwall.sh")
 run_once("syndaemon", "-i 1 -t -d -k")
 -- }}}
