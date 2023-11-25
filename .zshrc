@@ -56,6 +56,7 @@ elif [ `uname` = "Linux" ]; then
     source ~/.env/linux
 fi
 
+export PATH="$PATH:$HOME/.bin"
 source ~/.env-local
 
 #fix some keys

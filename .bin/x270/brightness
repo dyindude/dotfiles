@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+BRIGHTNESS=$(xrandr --verbose | awk '/Brightness/ { print $2; exit }')
+xrandr --output eDP-1 --brightness $(echo $BRIGHTNESS $1 $2 | bc)
