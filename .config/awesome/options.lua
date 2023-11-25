@@ -1,6 +1,6 @@
 local options =
 {
-    laptop = "false",
-    gaps = 5
+    laptop = "true",
+    gaps = 10
 }
 return options
