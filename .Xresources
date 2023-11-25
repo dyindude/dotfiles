@@ -1,16 +1,12 @@
-!URxvt*font:          xft:Entypo:pixelsize=14,xft:Terminus:size=13
-!URxvt*font: xft:Terminus:pixelsize=18,style=bold,xft:Inconsolata\ for\ Powerline:pixelsize=18,style=bold
-URxvt*font: xft:Terminus:pixelsize=18,style=bold,xft:Inconsolata Nerd Font Mono:pixelsize=18
-!URxvt*font: xft:Terminus:pixelsize=14,xft:Entypo:pixelsize=14
-!URxvt*font: xft:Entypo:pixelsize=14
-!URxvt*.transparent: true
+URxvt*font: xft:Terminus:pixelsize=18:antialias=true,xft:Inconsolata Nerd Font Mono:pixelsize=18:antialias=true
+URxvt*boldfont: xft:Terminus:pixelsize=18:style=bold:antialias=true,xft:Inconsolata Nerd Font Mono:pixelsize=18:style=bold:antialias=true
+
+URxvt*.transparent: true
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-!URxvt*.shading: 99
-!URxvt.tintColor: gray100
-!URxvt*blurRadius: 50x1
+URxvt*.shading: 40
+URxvt.tintColor: gray100
 URxvt*background:#000000
 URxvt*foreground:#FFFFFF
-URxvt*backgroundPixmap: /home/dyindude/.config/urxvt/background.png;0x0+0+0:op=tile
 URxvt*scrollBar: false
 URxvt*saveLines: 20480
 !URxvt*keysym.Meta-1: \033[1;68
@@ -54,3 +50,8 @@ URxvt.keysym.M-C-v:   perl:clipboard:paste_escaped
 *color7:  #C0C0C0
 *color15: #C0C0C0
 
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
