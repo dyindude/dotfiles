@@ -28,6 +28,9 @@ else
     brightnessarc_widget = function(...) end
 end
 
+-- local helper scripts
+local setwall = string.format("%s/.bin/x270/setwall", os.getenv("HOME"))
+
 kbdcfg.add_primary_layout("English", "US", "us")
 kbdcfg.add_primary_layout("ירבע", "HE", "il")
 
@@ -303,7 +306,8 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                       awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -c 0 set Master toggle") end),
                       awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -c 0 set Master 1dB-") end),
                       awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -c 0 set Master 1dB+") end),
-                      --XF86AudioMicMute
+                      --using F4 for this until we actually start using a mic on this laptop
+                      awful.key({ }, "XF86AudioMicMute", function () awful.util.spawn(setwall) end),
                       awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("light -U 5") end, {description = "decrease brightness", group = "custom"}),
                       awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("light -A 5") end, {description = "increase brightness", group = "custom"}),
                       --XF86Display
@@ -660,6 +664,6 @@ run_once("xmodmap","/home/dyindude/.Xmodmap")
 run_once("xrdb", "-load /home/dyindude/.Xresources")
 --run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
 --run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
-run_once(string.format("%s/.bin/x270/setwall", os.getenv("HOME")))
+run_once(setwall)
 run_once("syndaemon", "-i 1 -t -d -k")
 -- }}}
