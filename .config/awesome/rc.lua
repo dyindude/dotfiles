@@ -275,9 +275,9 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                   --                widget_text = "${AC_BAT}${color_on}${percent}%${color_off} "
                                   --            },
                                   brightnessarc_widget({
-                                      get_brightness_cmd = 'xbacklight -get',
-                                      inc_brightness_cmd = 'xbacklight -inc 5',
-                                      dec_brightness_cmd = 'xbacklight -dec 5'
+                                      get_brightness_cmd = 'light -G',
+                                      inc_brightness_cmd = 'light -A 5',
+                                      dec_brightness_cmd = 'light -U 5'
                                   }),
                                   batteryarc_widget({
                                       show_current_level = true,
@@ -299,8 +299,18 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
 
                       -- {{{ Key bindings
                       globalkeys = gears.table.join(
-                      awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("xbacklight -inc 5") end, {description = "increase brightness", group = "custom"}),
-                      awful.key({ }, "XF86MonBrightnessDown", function () awful.spawn("xbacklight -dec 5") end, {description = "decrease brightness", group = "custom"}),
+                      --these are the order of the x270 keys
+                      awful.key({ }, "XF86AudioMute", function () awful.util.spawn("amixer -c 0 set Master toggle") end),
+                      awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer -c 0 set Master 1dB-") end),
+                      awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer -c 0 set Master 1dB+") end),
+                      --XF86AudioMicMute
+                      awful.key({ }, "XF86MonBrightnessDown", function () awful.util.spawn("light -U 5") end, {description = "decrease brightness", group = "custom"}),
+                      awful.key({ }, "XF86MonBrightnessUp", function () awful.spawn("light -A 5") end, {description = "increase brightness", group = "custom"}),
+                      --XF86Display
+                      --XF86WLAN
+                      --XF86Tools
+                      --XF86Bluetooth
+                      --XF86Favorites
                       awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
                       {description="show help", group="awesome"}),
                       awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -644,12 +654,12 @@ function run_once(prg,arg_string,pname,screen)
     end  
 end
 
-run_once("parcellite")
+run_once("parcellite", "-n")
 run_once("gnome-screensaver")
 run_once("xmodmap","/home/dyindude/.Xmodmap")
 run_once("xrdb", "-load /home/dyindude/.Xresources")
 --run_once("/home/dyindude/.bin/set-nvidia-fanspeed.sh")
 --run_once("qiv", "-r -y /home/dyindude/.config/urxvt/wallpapers/*")
-run_once("/home/dyindude/.config/setwall.sh")
+run_once(string.format("%s/.bin/x270/setwall", os.getenv("HOME")))
 run_once("syndaemon", "-i 1 -t -d -k")
 -- }}}
