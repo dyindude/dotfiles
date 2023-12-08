@@ -1,0 +1,1 @@
+exec_always --no-startup-id 'sleep 5 && swaymsg input type:keyboard xkb_layout "esctilde"'

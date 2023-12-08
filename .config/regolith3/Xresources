@@ -1,0 +1,13 @@
+regolith.wallpaper.file: /home/dyindude/.config/wallpapers/dyindude_profile_high_angle_shot_of_character_from_this_image_w_e131d1e9-5338-4fd0-82aa-351b890a2178.png
+regolith.lockscreen.wallpaper.file: /home/dyindude/.config/wallpapers/dyindude_profile_high_angle_shot_of_character_from_this_image_w_e131d1e9-5338-4fd0-82aa-351b890a2178.png
+#gnome.terminal.update: false
+gnome.terminal.audible-bell: true
+gnome.terminal.font: Terminess Nerd Font Mono 14.3
+gnome.terminal.use-transparent-background: true
+gnome.terminal.background-transparency-percent: 60
+wm.bar.status_config: /home/dyindude/.config/regolith3/i3status-rust/config.toml
+wm.bar.font: Terminess Nerd Font Mono
+#wm.program.lock: /home/dyindude/.config/regolith3/lock
+#i3-wm.program.lock: /home/dyindude/.config/regolith3/lock
+wm.window.border.size: 0
+wm.window.border.style: none
