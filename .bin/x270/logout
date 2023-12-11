@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+LOGOUT=$(zenity --info --text="log out\nof system?" --ok-label cancel --extra-button 'log out' --icon-name=undo)
+
+if [ "$LOGOUT" = "log out" ]; then
+  /usr/bin/gnome-session-quit --logout --no-prompt && swaymsg exit
+fi
