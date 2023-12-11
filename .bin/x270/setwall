@@ -1,2 +1,8 @@
-#!/usr/bin/env bash
-feh --bg-fill $(find "$HOME/.config/wallpapers" -type f -name "*.png" | shuf -n 1)
+#!/usr/bin/env sh
+WALLPAPER="$(find "$HOME/.config/wallpapers" -type f -name "*.png" | shuf -n 1)"
+
+if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+    swaymsg output '*' bg "$WALLPAPER" fill
+else
+    feh --bg-fill "$WALLPAPER"
+fi
